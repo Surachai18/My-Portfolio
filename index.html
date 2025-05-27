@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สุรชัย สุขสุวรรณ | นักออกแบบกราฟิก</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1C2526',
+                        secondary: '#F5F6F5',
+                        accent: '#ee1c15',
+                        textPrimary: '#F5F6F5',
+                        textSecondary: '#D3D4D3'
+                    },
+                    fontFamily: {
+                        sans: ['"Inter"', '"Noto Sans Thai"', 'sans-serif'],
+                        mono: ['"SF Mono"', 'Fira Code', 'monospace']
+                    },
+                    animation: {
+                        'float': 'float 1s ease-in-out infinite',
+                        'fade-in': 'fadeIn 5s ease-in-out',
+                        'slide-up': 'slideUp 3s ease-out',
+                        'galaxy-rotate': 'galaxyRotate 100s linear infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-20px)'
+                            }
+                        },
+                        fadeIn: {
+                            '0%': {
+                                opacity: '0'
+                            },
+                            '100%': {
+                                opacity: '1'
+                            }
+                        },
+                        slideUp: {
+                            '0%': {
+                                transform: 'translateY(50px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: '1'
+                            }
+                        },
+                        galaxyRotate: {
+                            '0%': {
+                                transform: 'rotate(0deg)'
+                            },
+                            '100%': {
+                                transform: 'rotate(360deg)'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #1C2526;
+            color: #F5F6F5;
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #c2d8daee, #ee1c15);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover-effect {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover-effect:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px -15px rgba(21, 238, 227, 0.733);
+        }
+        
+        .nav-link {
+            position: relative;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #00fff2;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .glass-effect {
+            background: rgba(245, 246, 245, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .skill-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #00fff2, #fffffff1);
+        }
+        
+        .timeline::before {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #ff0707;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+        }
+        
+        .galaxy-bg {
+            position: relative;
+            background: radial-gradient(circle at center, #1C2526 0%, #000000 100%);
+            overflow: hidden;
+        }
+        
+        .galaxy-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('https://images.unsplash.com/photo-1465101162946-4377e57745c3?auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            animation: galaxy-rotate 100s linear infinite;
+            z-index: -1;
+        }
+        
+        .galaxy-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 70%);
+            z-index: -1;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: -1;
+        }
+        
+        .stars::before,
+        .stars::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #F5F6F5;
+            opacity: 0.7;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        
+        .stars::before {
+            top: 20%;
+            left: 30%;
+            animation-delay: 0.5s;
+        }
+        
+        .stars::after {
+            top: 60%;
+            left: 70%;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes twinkle {
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 0.2;
+            }
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            margin: 5% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+        }
+        
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #ee1c15;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .project-card img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card img:hover {
+            transform: scale(1.05);
+        }
+        
+        .project-card {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        
+        .number-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #ee1c15;
+            color: #F5F6F5;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-right: 0.75rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .number-icon:hover {
+            background-color: rgba(238, 28, 21, 0.8);
+            transform: scale(1.1);
+        }
+        
+        .section-icon {
+            color: #ee1c15;
+            font-size: 1.5rem;
+            margin-left: 0.75rem;
+        }
+        
+        .tab {
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .tab.active {
+            background-color: #ee1c15;
+            color: #F5F6F5;
+        }
+        
+        .tab:hover {
+            background-color: rgba(238, 28, 21, 0.2);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <div id="cursor" class="fixed w-6 h-6 rounded-full border-2 border-accent pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-transform duration-200 ease-out"></div>
+    <div id="cursor-follower" class="fixed w-4 h-4 rounded-full bg-accent pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-all duration-300 ease-out"></div>
+
+    <div id="preloader" class="fixed inset-0 bg-primary z-50 flex items-center justify-center">
+        <div class="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-accent"></div>
+    </div>
+
+    <nav class="fixed w-full glass-effect z-40 py-4 px-6 shadow-lg">
+        <div class="max-w-8xl mx-auto flex justify-between items-center">
+            <a href="#home" class="text-3xl font-bold gradient-text">Web Portfolio Surachai</a>
+            <div class="hidden md:flex space-x-3 flex-nowrap">
+                <a href="#home" class="nav-link text-textPrimary hover:text-accent transition-colors duration-300">หน้าหลัก</a>
+                <a href="#personal" class="nav-link text-textPrimary hover:text-accent transition-colors duration-300">ประวัติส่วนตัว</a>
+                <a href="#about" class="nav-link text-textPrimary hover:text-accent transition-colors duration-300">เกี่ยวกับฉัน</a>
+                <a href="#education" class="nav-link text-textPrimary hover:text-accent transition-colors duration-300">การศึกษา</a>
+                <a href="#skills" class="nav-link text-textPrimary hover:text-accent transition-colors duration-300">โปรแกรมเครื่องมือ</a>
+                <a href="#work-skills" class="nav-link text-textPrimary hover:text-accent transition-colors duration-300">ทักษะงาน</a>
+                <a href="#experience" class="nav-link text-textPrimary hover:text-accent transition-colors duration-300">ประสบการณ์การทำงาน</a>
+                <a href="#work" class="nav-link text-textPrimary hover:text-accent transition-colors duration-300">ผลงาน</a>
+                <a href="#contact" class="nav-link text-textPrimary hover:text-accent transition-colors duration-300">ติดต่อ</a>
+            </div>
+            <button id="mobile-menu-toggle" class="md:hidden text-textPrimary focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-primary z-60 flex flex-col items-center justify-center space-y-8 transform translate-y-full transition-transform duration-300 ease-in-out">
+        <a href="#home" class="text-3xl font-medium text-textPrimary hover:text-accent transition-colors duration-300 flex items-center">
+            <i class="fas fa-home mr-4"></i> หน้าหลัก
+        </a>
+        <a href="#personal" class="text-3xl font-medium text-textPrimary hover:text-accent transition-colors duration-300 flex items-center">
+            <i class="fas fa-user mr-4"></i> ประวัติ
+        </a>
+        <a href="#about" class="text-3xl font-medium text-textPrimary hover:text-accent transition-colors duration-300 flex items-center">
+            <i class="fas fa-info-circle mr-4"></i> เกี่ยวกับ
+        </a>
+        <a href="#education" class="text-3xl font-medium text-textPrimary hover:text-accent transition-colors duration-300 flex items-center">
+            <i class="fas fa-graduation-cap mr-4"></i> การศึกษา
+        </a>
+        <a href="#skills" class="text-3xl font-medium text-textPrimary hover:text-accent transition-colors duration-300 flex items-center">
+            <i class="fas fa-laptop-code mr-4"></i> ทักษะ
+        </a>
+        <a href="#work-skills" class="text-3xl font-medium text-textPrimary hover:text-accent transition-colors duration-300 flex items-center">
+            <i class="fas fa-briefcase mr-4"></i> ทักษะงาน
+        </a>
+        <a href="#experience" class="text-3xl font-medium text-textPrimary hover:text-accent transition-colors duration-300 flex items-center">
+            <i class="fas fa-chart-line mr-4"></i> ประสบการณ์
+        </a>
+        <a href="#work" class="text-3xl font-medium text-textPrimary hover:text-accent transition-colors duration-300 flex items-center">
+            <i class="fas fa-images mr-4"></i> ผลงาน
+        </a>
+        <a href="#contact" class="text-3xl font-medium text-textPrimary hover:text-accent transition-colors duration-300 flex items-center">
+            <i class="fas fa-envelope mr-4"></i> ติดต่อ
+        </a>
+        <button id="close-menu" class="absolute top-6 right-6 text-textPrimary hover:text-accent transition-colors duration-300">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 galaxy-bg">
+        <div class="stars"></div>
+        <div class="max-w-6xl mx-auto px-6 z-10 text-center md:text-left">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0 animate-fade-in">
+                    <h4 class="text-5xl md:text-5xl font-bold text-accent mb-4 animate-slide-up">สวัสดีครับ</h4>
+                    <h1 class="text-5xl md:text-7xl font-bold text-textPrimary mb-4 animate-slide-up whitespace-nowrap" style="animation-delay: 0.2s">สุรชัย สุขสุวรรณ</h1>
+                    <h2 class="text-6xl md:text-8xl font-extrabold text-textPrimary mb-6 animate-slide-up whitespace-nowrap" style="animation-delay: 0.4s; text-shadow: 2px 2px 4px rgba(26, 226, 253, 0.685);">Graphic Designer</h2>
+                    <p class="text-2xl font-medium text-textPrimary max-w-lg mb-8 animate-slide-up" style="animation-delay: 0.6s">
+                        ผมมีความสนใจงานด้านกราฟิกดีไซน์ และ UXUI <br>มีประสบการณ์การทำงานด้านกราฟิกดีไซน์ และ UXUI
+                    </p>
+                    <a href="#work" class="inline-block px-6 py-3 border-2 border-accent text-accent rounded hover:bg-accent hover:bg-opacity-10 transition-all duration-300 animate-slide-up" style="animation-delay: 0.8s">
+                        ดูผลงานของฉัน
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center relative">
+                    <img src="https://i.postimg.cc/C5DLsXW8/S-5578756-removebg-preview.png" alt="สุรชัย สุขสุวรรณ" class="w-full md:w-5/6 opacity-100 hover:opacity-100 transition-opacity duration-300">
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#personal" class="text-textSecondary hover:text-accent transition-colors duration-300">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="personal" class="py-20 galaxy-bg relative overflow-hidden">
+        <div class="stars"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-textPrimary mb-4 flex items-center">
+                <a href="#personal" class="number-icon">1.</a>
+                <i class="fas fa-user section-icon"></i> ประวัติส่วนตัว
+                <span class="hidden md:inline-block h-px bg-textSecondary flex-1 ml-4 relative top-1"></span>
+            </h2>
+            <div class="flex flex-col md:flex-row mt-12 items-center gap-8">
+                <div class="md:w-1/5">
+                    <div class="relative w-full h-96 rounded overflow-hidden border-2 border-accent">
+                        <img src="https://i.postimg.cc/tgt9cyMX/Resume.jpg" alt="สุรชัย สุขสุวรรณ" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-accent opacity-0 hover:opacity-10 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="absolute -z-10 top-5 left-5 w-full h-full border-2 border-accent rounded opacity-30"></div>
+                </div>
+                <div class="md:w-3/5 mt-4 md:mt-0">
+                    <p class="text-lg text-textSecondary mb-2">ชื่อ: สุรชัย สุขสุวรรณ</p>
+                    <p class="text-lg text-textSecondary mb-2">ชื่อเล่น: ทิว</p>
+                    <p class="text-lg text-textSecondary mb-2">อายุ: 22 ปี</p>
+                    <p class="text-lg text-textSecondary mb-2">เพศ: ชาย</p>
+                    <p class="text-lg text-textSecondary mb-2">
+                        โทรศัพท์: <a href="tel:0641393430" class="text-accent hover:underline">0641393430</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 galaxy-bg relative overflow-hidden">
+        <div class="stars"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-textPrimary mb-4 flex items-center">
+                <a href="#about" class="number-icon">2.</a>
+                <i class="fas fa-info-circle section-icon"></i> เกี่ยวกับฉัน
+                <span class="hidden md:inline-block h-px bg-textSecondary flex-1 ml-4 relative top-1"></span>
+            </h2>
+            <div class="flex flex-col md:flex-row mt-12">
+                <div class="md:w-3/5 pr-0 md:pr12">
+                    <p class="text-lg text-textSecondary mb-6">
+                        ผมนายสุรชัย สุขสุวรรณ บัณฑิตจบใหม่สาขาเทคโนโลยีสารสนเทศ <br>สายมัลติมีเดีย ที่มีความสนใจในการออกแบบกราฟิก ทั้งงานสิ่งพิมพ์และดิจิทัล <br>มีทักษะการใช้โปรแกรม Photoshop และ Illustrator เป็นอย่างดี <br>ใส่ใจในรายละเอียด สร้างสรรค์งานที่ตอบโจทย์
+                        และพร้อมเรียนรู้เทรนด์ใหม่ๆ <br>ในโลกของการออกแบบอยู่เสมอ
+                    </p>
+                </div>
+                <div class="md:w-3/5 mt-8 md:mt-0 relative">
+                    <div class="relative w-full h-80 rounded overflow-hidden border-2 border-accent">
+                        <img src="https://i.postimg.cc/XYgpFmCh/Tiw.png" alt="เกี่ยวกับฉัน" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-accent opacity-0 hover:opacity-10 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="absolute -z-10 top-5 left-5 w-full h-full border-2 border-accent rounded opacity-30"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-20 galaxy-bg relative">
+        <div class="stars"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-textPrimary mb-4 flex items-center">
+                <a href="#education" class="number-icon">3.</a>
+                <i class="fas fa-graduation-cap section-icon"></i> การศึกษา
+                <span class="hidden md:inline-block h-px bg-textSecondary flex-1 ml-4 relative top-1"></span>
+            </h2>
+            <div class="mt-12 relative timeline">
+                <div class="relative mb-12 pl-12 md:pl-0 md:w-1/2 md:pr-12">
+                    <div class="absolute -left-1 md:left-0 top-0 w-4 h-4 rounded-full bg-accent border-4 border-primary"></div>
+                    <div class="glass-effect p-6 rounded-lg card-hover-effect">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-textPrimary">ปริญญาตรี วท.บ. 4 ปี</h3>
+                            </div>
+                            <span class="text-base text-accent bg-accent bg-opacity-10 px-3 py-1 rounded-full">2564 - 2568</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-lg text-textSecondary">
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>สาขาเทคโนโลยีสารสนเทศ</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>คณะวิทยาศาสตร์</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>มหาวิทยาลัยราชภัฏบุรีรัมย์</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="relative mb-12 pl-12 md:pl-0 md:w-1/2 md:ml-auto md:pr-12">
+                    <div class="absolute -left-1 md:-left-6 top-0 w-4 h-4 rounded-full bg-accent border-4 border-primary"></div>
+                    <div class="glass-effect p-6 rounded-lg card-hover-effect">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-textPrimary">มัธยมศึกษาตอนต้น - ตอนปลาย</h3>
+                            </div>
+                            <span class="text-base text-accent bg-accent bg-opacity-10 px-3 py-1 rounded-full">2558 - 2564</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-lg text-textSecondary">
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>โรงเรียนสุวรรณภูมิพิทยไพศาล</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>สายวิทยาศาสตร์-คณิตศาสตร์</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 galaxy-bg relative">
+        <div class="stars"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-textPrimary mb-4 flex items-center">
+                <a href="#skills" class="number-icon">4.</a>
+                <i class="fas fa-laptop-code section-icon"></i> โปรแกรมเครื่องมือที่ใช้
+                <span class="hidden md:inline-block h-px bg-textSecondary flex-1 ml-4 relative top-1"></span>
+            </h2>
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="flex flex-col items-center glass-effect p-6 rounded-lg card-hover-effect">
+                    <img src="https://i.postimg.cc/tJ1mwHGW/photoshop-5968520.png" alt="VS Code" class="w-12 h-12 mb-3">
+                    <span class="text-lg text-textPrimary font-medium">Photoshop</span>
+                </div>
+                <div class="flex flex-col items-center glass-effect p-6 rounded-lg card-hover-effect">
+                    <img src="https://i.postimg.cc/76tWKZdq/illustrator-5968472.png" alt="Git" class="w-12 h-12 mb-3">
+                    <span class="text-lg text-textPrimary font-medium">Illustrator</span>
+                </div>
+                <div class="flex flex-col items-center glass-effect p-6 rounded-lg card-hover-effect">
+                    <img src="https://i.postimg.cc/8zLxTDJb/figma-5968705.png" alt="Figma" class="w-12 h-12 mb-3">
+                    <span class="text-lg text-textPrimary font-medium">Figma</span>
+                </div>
+                <div class="flex flex-col items-center glass-effect p-6 rounded-lg card-hover-effect">
+                    <img src="https://i.postimg.cc/DyRmtQLX/png-clipart-blender-3d-computer-graphics-logo-filehippo-3d-modeling-blenders-3d-computer-graphics-te.png" alt="Docker" class="w-12 h-12 mb-3">
+                    <span class="text-lg text-textPrimary font-medium">Blender</span>
+                </div>
+                <div class="flex flex-col items-center glass-effect p-6 rounded-lg card-hover-effect">
+                    <img src="https://i.postimg.cc/pVGmBMdk/5461-24122714072310-removebg-preview.png" alt="Xampp" class="w-12 h-12 mb-3">
+                    <span class="text-lg text-textPrimary font-medium">Lightroom</span>
+                </div>
+                <div class="flex flex-col items-center glass-effect p-6 rounded-lg card-hover-effect">
+                    <img src="https://i.postimg.cc/hPXfyZzn/images.png" alt="Github" class="w-12 h-12 mb-3">
+                    <span class="text-lg text-textPrimary font-medium">Animate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work-skills" class="py-20 galaxy-bg relative">
+        <div class="stars"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-textPrimary mb-4 flex items-center">
+                <a href="#work-skills" class="number-icon">5.</a>
+                <i class="fas fa-briefcase section-icon"></i> ทักษะงาน
+                <span class="hidden md:inline-block h-px bg-textSecondary flex-1 ml-4 relative top-1"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div class="glass-effect p-8 rounded-lg card-hover-effect">
+                    <h3 class="text-xl font-bold text-textPrimary mb-6">ทักษะความสามารถ</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-lg text-textSecondary">ออกแบบโปสเตอร์, โบว์ชัวร์, โฆษณา, แบนเนอร์</span>
+                                <span class="text-accent text-lg">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="skill-bar h-1.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-lg text-textSecondary">ออกแบบโลโก้, แบรนดิ้ง</span>
+                                <span class="text-accent text-lg">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="skill-bar h-1.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-lg text-textSecondary">ออกแบบPackaging, Mockup, และงานกราฟิกอื่นๆ </span>
+                                <span class="text-accent text-lg">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="skill-bar h-1.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-lg text-textSecondary">UXUI Webdesigner, UI Game 2D</span>
+                                <span class="text-accent text-lg">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="skill-bar h-1.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-lg text-textSecondary">Model 3D</span>
+                                <span class="text-accent text-lg">50%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="skill-bar h-1.5 rounded-full" style="width: 50%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glass-effect p-8 rounded-lg card-hover-effect">
+                    <h3 class="text-xl font-bold text-textPrimary mb-6">ทักษะการทำงาน</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-lg text-textSecondary">การปรับตัวและยืดหยุ่น</span>
+                                <span class="text-accent text-lg">100%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="skill-bar h-1.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-lg text-textSecondary">ความรับผิดชอบและความีวินัย</span>
+                                <span class="text-accent text-lg">100%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="skill-bar h-1.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-lg text-textSecondary">การสื่อสารที่มีประสิทธิภาพ</span>
+                                <span class="text-accent text-lg">100%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="skill-bar h-1.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-lg text-textSecondary">การบริหารจัดการเวลา</span>
+                                <span class="text-accent text-lg">100%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                                <div class="skill-bar h-1.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 galaxy-bg relative">
+        <div class="stars"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-textPrimary mb-4 flex items-center">
+                <a href="#experience" class="number-icon">6.</a>
+                <i class="fas fa-chart-line section-icon"></i> ประสบการณ์การทำงาน
+                <span class="hidden md:inline-block h-px bg-textSecondary flex-1 ml-4 relative top-1"></span>
+            </h2>
+            <div class="mt-12 relative timeline">
+                <div class="relative mb-12 pl-12 md:pl-0 md:w-1/2 md:pr-12">
+                    <div class="absolute -left-1 md:left-0 top-0 w-4 h-4 rounded-full bg-accent border-4 border-primary"></div>
+                    <div class="glass-effect p-6 rounded-lg card-hover-effect">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-textPrimary">กราฟิกดีไซน์ & Dev ฝึกงาน</h3>
+                                <h4 class="text-lg text-textSecondary">บริษัท พะ พิม จำกัด</h4>
+                            </div>
+                            <span class="text-base text-accent bg-accent bg-opacity-10 px-3 py-1 rounded-full">4 พ.ย. 2567 - 25 ม.ค. 2568</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-lg text-textSecondary">
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>กราฟิกดีไซน์ โปสเตอร์ โฆษณา แบนเนอร์ สื่อสิ่งพิมพ์ </span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>ออกแบบบรรจุภัณฑ์ Model 3D </span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>พัฒนาระบบเว็บไซต์จัดการพนักงาน</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>สร้างและพัฒนา Line ChatBot</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text-accent mr-2 mt-1 text-sm"></i>
+                                <span>UXUI Web designer</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-20 galaxy-bg relative">
+        <div class="stars"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-textPrimary mb-6 flex items-center">
+                <a href="#work" class="number-icon">7.</a>
+                <i class="fas fa-images section-icon"></i> ผลงาน
+                <span class="hidden md:inline-block h-px bg-textSecondary flex-1 ml-4 relative top-1"></span>
+            </h2>
+            <div class="flex flex-wrap gap-4 mb-8">
+                <div class="tab glass-effect text-textPrimary active" data-tab="all">ทั้งหมด</div>
+                <div class="tab glass-effect text-textPrimary" data-tab="graphic">งานกราฟิก</div>
+                <div class="tab glass-effect text-textPrimary" data-tab="game">งานเกม</div>
+                <div class="tab glass-effect text-textPrimary" data-tab="web">งานเว็บไซต์</div>
+            </div>
+            <!-- All Projects -->
+            <div id="all" class="tab-content active">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Graphic Projects -->
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/yYvPdcxd/hamburguer.png" alt="โฆษณาอาหาร" onclick="openModal('https://i.postimg.cc/yYvPdcxd/hamburguer.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาอาหาร</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/jjDH39Vt/e87facc6-2169-4f8a-bce7-c8294b6225de.jpg" alt="โฆษณาสครับ พะ พิม" onclick="openModal('https://i.postimg.cc/jjDH39Vt/e87facc6-2169-4f8a-bce7-c8294b6225de.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาสครับ พะ พิม</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/dtF9Q4Cj/th-11134207-7rasa-m4rqd5b1vz4a14.jpg" alt="โฆษณาสครับ พะ พิม" onclick="openModal('https://i.postimg.cc/dtF9Q4Cj/th-11134207-7rasa-m4rqd5b1vz4a14.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาสครับ พะ พิม</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/x1bZ3hrh/image.png" alt="โฆษณาสินค้า" onclick="openModal('https://i.postimg.cc/x1bZ3hrh/image.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาสินค้า</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/m2C4hDL1/2.png" alt="โฆษณาสินค้า" onclick="openModal('https://i.postimg.cc/m2C4hDL1/2.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาสินค้า</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/3rSb5YYz/image.png" alt="โปสเตอร์เทศกาลสงกรานต์" onclick="openModal('https://i.postimg.cc/3rSb5YYz/image.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โปสเตอร์เทศกาลสงกรานต์</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/WbsymDYR/image.jpg" alt="โปสเตอร์รับสมัครนักศึกษา" onclick="openModal('https://i.postimg.cc/WbsymDYR/image.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โปสเตอร์รับสมัครนักศึกษา</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/MTkPnXfF/6401124180301.png" alt="โปสเตอร์ข่าว" onclick="openModal('https://i.postimg.cc/MTkPnXfF/6401124180301.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โปสเตอร์ข่าว</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/dQR6bzKG/image.png" alt="โปสเตอร์กีฬา" onclick="openModal('https://i.postimg.cc/dQR6bzKG/image.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โปสเตอร์กีฬา</h3>
+                        </div>
+                    </div>
+                    <!-- Game Projects -->
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/Qtk4dx6D/message-Image-1748351202312.jpg" alt="Game 2D" onclick="openModal('https://i.postimg.cc/Qtk4dx6D/message-Image-1748351202312.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">Game 2D</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/qqJmhVY3/message-Image-1748351258454.jpg" alt="Game 2D" onclick="openModal('https://i.postimg.cc/qqJmhVY3/message-Image-1748351258454.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">Game 2D</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/KzypbgDQ/message-Image-1748351326413.jpg" alt="Game 2D" onclick="openModal('https://i.postimg.cc/KzypbgDQ/message-Image-1748351326413.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">Game 2D</h3>
+                        </div>
+                    </div>
+                    <!-- Web Projects -->
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/Bvf4jMn6/message-Image-1748252659404.jpg" alt="เว็บการเรียนรู้" onclick="openModal('https://i.postimg.cc/Bvf4jMn6/message-Image-1748252659404.jpg')">
+                        <img src="https://i.postimg.cc/G36XF8Tz/message-Image-1748261073697.jpg" alt="เว็บการเรียนรู้" onclick="openModal('https://i.postimg.cc/G36XF8Tz/message-Image-1748261073697.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">เว็บการเรียนรู้</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/vm86QgcH/message-Image-1748259864764.jpg" alt="เว็บจองตั๋วคอนเสิร์ต" onclick="openModal('https://i.postimg.cc/vm86QgcH/message-Image-1748259864764.jpg')">
+                        <img src="https://i.postimg.cc/90wqXfWQ/message-Image-1748259969743.jpg" alt="เว็บจองตั๋วคอนเสิร์ต" onclick="openModal('https://i.postimg.cc/90wqXfWQ/message-Image-1748259969743.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">เว็บจองตั๋วคอนเสิร์ต</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/SQB7MYkN/message-Image-1748260919164.jpg" alt="เว็บจองห้องพัก" onclick="openModal('https://i.postimg.cc/SQB7MYkN/message-Image-1748260919164.jpg')">
+                        <img src="https://i.postimg.cc/J4JPPrb8/message-Image-1748260938927.jpg" alt="เว็บจองห้องพัก" onclick="openModal('https://i.postimg.cc/J4JPPrb8/message-Image-1748260938927.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">เว็บจองห้องพัก</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/8PyyrPKy/message-Image-1748260419250.jpg" alt="เว็บระบบจัดการพนักงาน" onclick="openModal('https://i.postimg.cc/8PyyrPKy/message-Image-1748260419250.jpg')">
+                        <img src="https://i.postimg.cc/mhx1PGDN/message-Image-1748260531578.jpg" alt="เว็บระบบจัดการพนักงาน" onclick="openModal('https://i.postimg.cc/mhx1PGDN/message-Image-1748260531578.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">เว็บระบบจัดการพนักงาน</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/CK7p6Hpj/message-Image-1748262152225.jpg" alt="เว็บคำนวณเกรด" onclick="openModal('https://i.postimg.cc/CK7p6Hpj/message-Image-1748262152225.jpg')">
+                        <img src="https://i.postimg.cc/PfC6vzJP/message-Image-1748262184560.jpg" alt="เว็บคำนวณเกรด" onclick="openModal('https://i.postimg.cc/PfC6vzJP/message-Image-1748262184560.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">เว็บคำนวณเกรด</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/MZgXDgPz/message-Image-1748262254473.jpg" alt="เว็บPortfolioของฉัน" onclick="openModal('https://i.postimg.cc/MZgXDgPz/message-Image-1748262254473.jpg')">
+                        <img src="https://i.postimg.cc/3wLBddHX/message-Image-1748262285089.jpg" alt="เว็บPortfolioของฉัน" onclick="openModal('https://i.postimg.cc/3wLBddHX/message-Image-1748262285089.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">เว็บPortfolioของฉัน</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Graphic Projects -->
+            <div id="graphic" class="tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/yYvPdcxd/hamburguer.png" alt="โฆษณาอาหาร" onclick="openModal('https://i.postimg.cc/yYvPdcxd/hamburguer.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาอาหาร</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/jjDH39Vt/e87facc6-2169-4f8a-bce7-c8294b6225de.jpg" alt="โฆษณาสครับ พะ พิม" onclick="openModal('https://i.postimg.cc/jjDH39Vt/e87facc6-2169-4f8a-bce7-c8294b6225de.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาสครับ พะ พิม</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/dtF9Q4Cj/th-11134207-7rasa-m4rqd5b1vz4a14.jpg" alt="โฆษณาสครับ พะ พิม" onclick="openModal('https://i.postimg.cc/dtF9Q4Cj/th-11134207-7rasa-m4rqd5b1vz4a14.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาสครับ พะ พิม</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/x1bZ3hrh/image.png" alt="โฆษณาสินค้า" onclick="openModal('https://i.postimg.cc/x1bZ3hrh/image.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาสินค้า</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/m2C4hDL1/2.png" alt="โฆษณาสินค้า" onclick="openModal('https://i.postimg.cc/m2C4hDL1/2.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โฆษณาสินค้า</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/3rSb5YYz/image.png" alt="โปสเตอร์เทศกาลสงกรานต์" onclick="openModal('https://i.postimg.cc/3rSb5YYz/image.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โปสเตอร์เทศกาลสงกรานต์</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/WbsymDYR/image.jpg" alt="โปสเตอร์รับสมัครนักศึกษา" onclick="openModal('https://i.postimg.cc/WbsymDYR/image.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โปสเตอร์รับสมัครนักศึกษา</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/MTkPnXfF/6401124180301.png" alt="โปสเตอร์ข่าว" onclick="openModal('https://i.postimg.cc/MTkPnXfF/6401124180301.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โปสเตอร์ข่าว</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/dQR6bzKG/image.png" alt="โปสเตอร์กีฬา" onclick="openModal('https://i.postimg.cc/dQR6bzKG/image.png')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">โปสเตอร์กีฬา</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Game Projects -->
+            <div id="game" class="tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/Qtk4dx6D/message-Image-1748351202312.jpg" alt="Game 2D" onclick="openModal('https://i.postimg.cc/Qtk4dx6D/message-Image-1748351202312.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">Game 2D</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/qqJmhVY3/message-Image-1748351258454.jpg" alt="Game 2D" onclick="openModal('https://i.postimg.cc/qqJmhVY3/message-Image-1748351258454.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">Game 2D</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/KzypbgDQ/message-Image-1748351326413.jpg" alt="Game 2D" onclick="openModal('https://i.postimg.cc/KzypbgDQ/message-Image-1748351326413.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">Game 2D</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Web Projects -->
+            <div id="web" class="tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/Bvf4jMn6/message-Image-1748252659404.jpg" alt="การเรียนรู้ HTML" onclick="openModal('https://i.postimg.cc/Bvf4jMn6/message-Image-1748252659404.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">การเรียนรู้ HTML</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/vm86QgcH/message-Image-1748259864764.jpg" alt="จองตั๋วคอนเสิร์ต PHP" onclick="openModal('https://i.postimg.cc/vm86QgcH/message-Image-1748259864764.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">จองตั๋วคอนเสิร์ต PHP</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/SQB7MYkN/message-Image-1748260919164.jpg" alt="จองห้องพัก C# .NET" onclick="openModal('https://i.postimg.cc/SQB7MYkN/message-Image-1748260919164.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">จองห้องพัก C# .NET</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/8PyyrPKy/message-Image-1748260419250.jpg" alt="ระบบจัดการพนักงาน React" onclick="openModal('https://i.postimg.cc/8PyyrPKy/message-Image-1748260419250.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">ระบบจัดการพนักงาน React</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/WPdh0s79/message-Image-1748262152225.jpg" alt="คำนวณเกรด HTML" onclick="openModal('https://i.postimg.cc/WPdh0s79/message-Image-1748262152225.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">คำนวณเกรด HTML</h3>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://i.postimg.cc/MZgXDgPz/message-Image-1748262254473.jpg" alt="Portfolio HTML Tailwind" onclick="openModal('https://i.postimg.cc/MZgXDgPz/message-Image-1748262254473.jpg')">
+                        <div class="relative glass-effect p-6 rounded-md card-hover-effect">
+                            <h3 class="text-xl font-bold text-textPrimary mb-2">Portfolio HTML Tailwind</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 galaxy-bg relative">
+        <div class="stars"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-textPrimary mb-4 flex items-center">
+                <a href="#contact" class="number-icon">8.</a>
+                <i class="fas fa-envelope section-icon"></i> ติดต่อ
+                <span class="hidden md:inline-block h-px bg-textSecondary flex-1 ml-4 relative top-1"></span>
+            </h2>
+            <div class="mt-12 flex flex-col md:flex-row">
+                <div class="md:w-1/2 pr-0 md:pr-12 mb-12 md:mb-0">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-accent mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="text-lg text-textPrimary font-medium">Email</h4>
+                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mithflash1@gmail.com&su=ติดต่อจากเว็บไซต์" target="_blank" title="ส่งอีเมลถึง สุรชัย สุขสุวรรณ" class="text-lg text-textSecondary hover:text-accent transition-colors duration-300 contact-link">mithflash1@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt text-accent mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="text-lg text-textPrimary font-medium">โทรศัพท์</h4>
+                                <a href="tel:0641393430" class="text-lg text-textSecondary hover:text-accent transition-colors duration-300">064-139-3430</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fab fa-line text-accent mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="text-lg text-textPrimary font-medium">ไลน์</h4>
+                                <a href="https://line.me/ti/p/~tiw_suk_2545" target="_blank" class="text-lg text-textSecondary hover:text-red-500 transition-colors duration-300">tiw_suk_2545</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form id="contact-form" class="glass-effect p-6 rounded-md space-y-4" action="https://formspree.io/f/mithflash1" method="POST">
+                        <div>
+                            <label for="name" class="block text-lg text-textPrimary mb-2">ชื่อ</label>
+                            <input type="text" id="name" name="name" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-3 text-textSecondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-lg text-textPrimary mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-3 text-textSecondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-lg text-textPrimary mb-2">หัวข้อ</label>
+                            <input type="text" id="subject" name="subject" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-3 text-textSecondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-lg text-textPrimary mb-2">ข้อความ</label>
+                            <textarea id="message" name="message" rows="5" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-3 text-textSecondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="px-6 py-3 bg-accent bg-opacity-40 text-white font-semibold rounded-full hover:bg-accent hover:bg-opacity-90 transition duration-300">ส่งข้อความ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-primary py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-lg text-textSecondary">ออกแบบและพัฒนาโดย สุรชัย สุขสุวรรณ</p>
+            <p class="text-sm text-textSecondary mt-2">© 2025 สงวนลิขสิทธิ์</p>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content glass-effect rounded-lg p-4">
+            <span id="close-modal" class="close">×</span>
+            <img id="modal-image" class="modal-image" src="" alt="Project Image">
+        </div>
+    </div>
+
+    <script>
+        // Preloader
+        window.onload = function() {
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'auto'
+                    });
+                    if (window.location.hash) {
+                        history.replaceState(null, null, window.location.pathname);
+                    }
+                }, 500);
+            }, 1000);
+        };
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.remove('translate-y-full');
+        });
+
+        closeMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.add('translate-y-full');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (!anchor.classList.contains('tab') && anchor.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        mobileMenu.classList.add('translate-y-full');
+                    }
+                }
+            });
+        });
+
+        // Active Nav Link on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursor-follower');
+
+        document.addEventListener('mousemove', function(e) {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+            setTimeout(() => {
+                cursorFollower.style.left = `${e.clientX}px`;
+                cursorFollower.style.top = `${e.clientY}px`;
+            }, 100);
+        });
+
+        const hoverElements = document.querySelectorAll('a, button, img, .project-card, input, textarea, .tab');
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursor.style.borderColor = '#ffffff';
+                cursorFollower.style.transform = 'translate(-50%, -50%) scale(2)';
+                cursorFollower.style.backgroundColor = 'rgba(238, 28, 21, 0.5)';
+            });
+            element.addEventListener('mouseleave', function() {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursor.style.borderColor = '#ee1c15';
+                cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorFollower.style.backgroundColor = '#ee1c15';
+            });
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            fetch('https://formspree.io/f/mithflash1', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert('ส่งข้อความสำเร็จ!');
+                    contactForm.reset();
+                } else {
+                    alert('เกิดข้อผิดพลาด กรุณาลองใหม่');
+                }
+            }).catch(error => {
+                alert('เกิดข้อผิดพลาด: ' + error.message);
+            });
+        });
+
+        // Modal Functionality
+        function openModal(src) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-image');
+            modal.style.display = 'block';
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        document.getElementById('close-modal').addEventListener('click', closeModal);
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }); // Tab Functionality
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const currentScrollY = window.scrollY; // บันทึกตำแหน่ง scroll
+                const targetId = tab.getAttribute('data-tab');
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(targetId).classList.add('active');
+                window.scrollTo(0, currentScrollY); // คืนค่าตำแหน่ง scroll
+            });
+        });
+    </script>
+</body>
+
+</html>
